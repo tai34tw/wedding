@@ -226,7 +226,7 @@ export default function RSVP() {
         <Field label="電子喜帖 Email*">
           <input
             name="emailForEInvitation"
-            placeholder="不需要請輸入 無"
+            placeholder="不需要請輸入無"
             required
             style={{
               ...styles.underlineInput,
@@ -274,7 +274,7 @@ function Field({ label, children }) {
 const styles = {
   container: {
     padding: "28px",
-    maxWidth: "1024px",
+    maxWidth: "480px",
     width: "50%",
     minHeight: "960px",
     margin: "auto",
@@ -337,7 +337,7 @@ const styles = {
   submitBtn: {
     marginTop: "10px",
     padding: "12px",
-    background: "#4b3b2f",
+    background: "#a18350",
     color: "white",
     border: "none",
     borderRadius: "8px",
@@ -349,6 +349,7 @@ const styles = {
     margin: "auto",
     textAlign: "center",
     fontFamily: "serif",
-    color: "#4b3b2f",
+    // color: "#4b3b2f",
+    color: "#a18350",
   },
 };
