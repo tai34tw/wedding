@@ -13,6 +13,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ⭐ 保證 Safari & macOS 都能滿版，避免黑邊 */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* 將 background color 放在 body 而不是 :root */
+body {
+  background-color: #f7f3eb; /* ← 你的婚禮米白背景色 */
+}
+
+/* --- 連結、文字等原本樣式可保留 --- */
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -20,14 +39,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -54,9 +65,12 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light mode */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
+  }
+  body {
     background-color: #ffffff;
   }
   a:hover {
