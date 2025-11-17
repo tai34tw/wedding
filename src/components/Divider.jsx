@@ -20,7 +20,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
-    margin: "40px 0",
+    margin: "5px 0",
   },
   dividerLine: {
     position: "absolute",
