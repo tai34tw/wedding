@@ -115,7 +115,7 @@ export default function RSVP() {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>RSVP</h2>
+      {/* <h2 style={styles.title}>RSVP</h2> */}
 
       {/* 出席切換 */}
       <div style={styles.toggleBox}>
