@@ -1,4 +1,7 @@
-import { WEDDING_INFO } from "../constants/wedding.js";
+import { COLORS, WEDDING_INFO } from "../constants/wedding.js";
+import mapPreviewImage from "../assets/images/map-preview.png";
+import shuttleIcon from "/icons/shuttle.png";
+import subwayIcon from "/icons/subway.png";
 
 function MapSection() {
   return (
@@ -11,26 +14,39 @@ function MapSection() {
         </div>
 
         <div style={styles.mapFrame}>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.1131040703704!2d121.550742!3d25.0980324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ac3b78936b87%3A0x87561057caaacb5!2z6Z2S6Z2S6aOf5bCa6Iqx5ZyS5pyD6aSo!5e0!3m2!1szh-TW!2stw!4v1762788597076!5m2!1szh-TW!2stw"
-            width="100%"
-            height="400"
-            style={styles.iframe}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Wedding Location Map"
-          />
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=青青食尚花園會館"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.mapLink}
+            onMouseEnter={(e) => {
+              const overlay = e.currentTarget.querySelector(".map-overlay");
+              overlay.style.opacity = 1;
+            }}
+            onMouseLeave={(e) => {
+              const overlay = e.currentTarget.querySelector(".map-overlay");
+              overlay.style.opacity = 0;
+            }}
+          >
+            <img
+              src={mapPreviewImage}
+              alt="Google Map Preview"
+              style={styles.mapImage}
+            />
+            <div style={styles.mapOverlay} className="map-overlay">
+              Open Google Maps
+            </div>
+          </a>
         </div>
 
         <div style={styles.transportation}>
           <TransportInfo
-            icon="/icons/subway.png"
+            icon={subwayIcon}
             title="捷運/公車"
             content="捷運淡水線至士林站，轉乘公車815、255、304、小型公車18、19，至故宮博物院站下站。"
           />
           <TransportInfo
-            icon="/icons/shuttle.png"
+            icon={shuttleIcon}
             title="接駁車"
             content="乘車處 - 士林捷運站一號出口直行至中正路左側（中正路249-1號）
 接駁時間：晚宴：16:45、17:15、17:45、18:15"
@@ -86,12 +102,44 @@ const styles = {
   mapFrame: {
     width: "100%",
     marginBottom: "16px",
+    display: "flex",
+    justifyContent: "center", // ★ 讓地圖置中
   },
-  iframe: {
-    border: 0,
+  mapLink: {
+    position: "relative",
+    display: "block",
+    width: "75%",
+    maxWidth: "600px", // ★ 可避免大螢幕太寬
     borderRadius: "12px",
+    overflow: "hidden",
+    cursor: "pointer",
+    margin: "0 auto", // ★ 置中保險
   },
+  mapImage: {
+    width: "100%",
+    display: "block",
+  },
+  mapOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: COLORS.background67,
+    color: COLORS.primary,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "20px",
+    fontWeight: "600",
+    opacity: 0,
+    transition: "opacity 0.25s ease-in-out",
+  },
+
   transportation: {
+    width: "75%",
+    maxWidth: "600px", // ★ 與地圖保持一致
+    margin: "0 auto", // ★ 居中但文字靠左
     textAlign: "left",
     lineHeight: "1.6",
   },

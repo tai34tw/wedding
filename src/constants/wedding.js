@@ -1,5 +1,6 @@
 export const COLORS = {
   background: "#fdfaf4",
+  background67: "#fdfaf4aa", // 66.7%透明度
   primary: "#4b3b2f",
   secondary: "#a18350",
   divider: "#bfa06c"
