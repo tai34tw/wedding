@@ -25,9 +25,9 @@ function App() {
           <p>與我們一起慶祝！</p>
         </div>
       </header>
-      <Divider text="Information" />
+      <Divider text="How to Get There" />
       <MapSection />
-      <Divider text="" />
+      <Divider text="RSVP" />
       <Countdown />
       <RSVP />
     </div>
