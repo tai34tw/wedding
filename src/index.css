@@ -13,7 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ⭐ 保證 Safari & macOS 都能滿版，避免黑邊 */
 html,
 body,
 #root {
@@ -25,12 +24,9 @@ body,
   overflow-x: hidden;
 }
 
-/* 將 background color 放在 body 而不是 :root */
 body {
-  background-color: #f7f3eb; /* ← 你的婚禮米白背景色 */
+  background-color: #f7f3eb; /* 米白背景色 */
 }
-
-/* --- 連結、文字等原本樣式可保留 --- */
 
 a {
   font-weight: 500;
