@@ -74,7 +74,7 @@ const styles = {
   countdownSection: {
     textAlign: "center",
     width: "100%",
-    marginBottom: "60px",
+    marginBottom: "40px",
     color: COLORS.primary,
   },
   countdownTitle: {
