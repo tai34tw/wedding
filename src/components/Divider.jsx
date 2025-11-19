@@ -11,7 +11,7 @@ function Divider({ text }) {
 
 const styles = {
   divider: {
-    width: "100%",
+    width: "auto",
     textAlign: "center",
     fontSize: "18px",
     letterSpacing: "2px",
@@ -20,13 +20,14 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
-    margin: "5px 0",
+    margin: "clamp(5px, 4vw, 10px) 0",
   },
   dividerLine: {
     position: "absolute",
     top: "50%",
-    left: 0,
-    width: "100%",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "90vw",
     height: "1px",
     backgroundColor: COLORS.divider,
     zIndex: 0,
@@ -36,6 +37,8 @@ const styles = {
     backgroundColor: COLORS.background,
     padding: "0 16px",
     zIndex: 1,
+    whiteSpace: "pre-line",
+    display: "inline-block",
   },
 };
 

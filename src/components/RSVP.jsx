@@ -274,8 +274,8 @@ function Field({ label, children }) {
 const styles = {
   container: {
     padding: "28px",
-    maxWidth: "480px",
-    width: "50%",
+    maxWidth: "520px",
+    width: "80%",
     minHeight: "960px",
     margin: "auto",
     fontFamily: "serif",
@@ -288,7 +288,7 @@ const styles = {
   },
   toggleBox: {
     display: "flex",
-    gap: "10px",
+    gap: "clamp(8px, 4vw, 16px)",
     marginBottom: "20px",
   },
   toggleBtn: {
@@ -307,7 +307,7 @@ const styles = {
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: "18px",
+    gap: "clamp(10px, 4vw, 20px)",
   },
   underlineField: {
     display: "flex",

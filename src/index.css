@@ -76,3 +76,47 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* -----------------------------
+   全站字體大小：中等(含手機自動縮放)
+--------------------------------*/
+html {
+  font-size: clamp(14px, 1vw + 12px, 18px);
+  /* clamp(最小, 公式, 最大) */
+}
+
+/* 確保排版不會亂斷行 */
+body, p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* -----------------------------
+   RWD 排版寬度限制
+   避免超大螢幕行寬太長難以閱讀
+--------------------------------*/
+.container {
+  width: 100%;
+  max-width: 1080px;  /* 電腦畫面閱讀剛好 */
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* -----------------------------
+   Image 自適應避免爆版
+--------------------------------*/
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* -----------------------------
+   小螢幕標題有點太大 → 自動縮小
+--------------------------------*/
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.3rem; }
+}
+

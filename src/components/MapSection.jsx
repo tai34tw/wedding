@@ -82,7 +82,7 @@ const styles = {
     boxSizing: "border-box",
   },
   mapTitle: {
-    fontSize: "22px",
+    fontSize: "clamp(22px, 4vw, 28px)",
     fontWeight: "bold",
     marginBottom: "8px",
     textAlign: "left",
@@ -92,11 +92,11 @@ const styles = {
     marginBottom: "16px",
   },
   venueName: {
-    fontSize: "18px",
+    fontSize: "clamp(16px, 4vw, 20px)",
     margin: "0 0 4px 0",
   },
   venueAddress: {
-    fontSize: "16px",
+    fontSize: "clamp(14px, 4vw, 18px)",
     margin: 0,
   },
   mapFrame: {
@@ -108,8 +108,8 @@ const styles = {
   mapLink: {
     position: "relative",
     display: "block",
-    width: "75%",
-    maxWidth: "600px", // ★ 可避免大螢幕太寬
+    width: "90%",
+    maxWidth: "660px", // ★ 可避免大螢幕太寬
     borderRadius: "12px",
     overflow: "hidden",
     cursor: "pointer",
@@ -137,11 +137,11 @@ const styles = {
   },
 
   transportation: {
-    width: "75%",
-    maxWidth: "600px", // ★ 與地圖保持一致
+    width: "90%",
+    maxWidth: "660px", //★ 與地圖保持一致
     margin: "0 auto", // ★ 居中但文字靠左
     textAlign: "left",
-    lineHeight: "1.6",
+    lineHeight: "clamp(1.5, 4vw, 1.8)",
   },
   transportItem: {
     marginBottom: "16px",
@@ -157,12 +157,12 @@ const styles = {
     height: "20px",
   },
   transportTitle: {
-    fontSize: "16px",
+    fontSize: "clamp(12px, 4vw, 18px)",
     fontWeight: "600",
   },
   transportContent: {
     marginLeft: "28px",
-    fontSize: "16px",
+    fontSize: "clamp(12px, 4vw, 18px)",
     whiteSpace: "pre-line",
   },
 };
