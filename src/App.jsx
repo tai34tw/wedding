@@ -32,7 +32,7 @@ function App() {
                 <p>與我們一起慶祝！</p>
               </div>
             </header>
-            <Divider text={`How to Get There\n↓`} />
+            <Divider text={`↓ Get More Information ↓`} />
           </section>
           <MapSection />
           <Divider text="RSVP" />
