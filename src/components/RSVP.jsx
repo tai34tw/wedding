@@ -19,9 +19,9 @@ export default function RSVP() {
     relationshipTo: "新娘親友",
     emailForEInvitation: "",
     addressForPaperInvitation: "",
-    numAdults: "0",
-    numKids: "0",
-    vegetarianCount: "0",
+    numAdults: "",
+    numKids: "",
+    vegetarianCount: "",
   });
 
   const RELATIONSHIP_OPTIONS = ["新郎親友", "新娘親友"];
@@ -155,7 +155,7 @@ export default function RSVP() {
         <Field label="手機號碼 *">
           <input
             name="phoneNumber"
-            placeholder="09xx-xxx-xxx"
+            // placeholder="09xx-xxx-xxx"
             required
             style={{
               ...styles.underlineInput,
