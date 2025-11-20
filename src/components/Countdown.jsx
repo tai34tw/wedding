@@ -78,7 +78,7 @@ const styles = {
     color: COLORS.primary,
   },
   countdownTitle: {
-    fontSize: "clamp(24px, 4vw, 36px)",
+    fontSize: "clamp(24px, 4vw, 48px)",
     letterSpacing: "6px",
     fontWeight: "300",
     marginBottom: "margin: clamp(20px, 4vw, 40px) 0px clamp(10px, 4vw, 20px);",
