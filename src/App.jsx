@@ -83,7 +83,7 @@ const styles = {
     marginBottom: "clamp(10px, 4vw, 20px)",
   },
   mainTitle: {
-    fontSize: "clamp(46px, 4vw, 68px)",
+    fontSize: "clamp(46px, 4vw, 58px)",
     fontWeight: 500,
     lineHeight: "1.2",
     textTransform: "uppercase",
