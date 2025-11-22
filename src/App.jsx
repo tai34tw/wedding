@@ -80,7 +80,7 @@ const styles = {
   header: {
     textAlign: "center",
     width: "100%",
-    marginBottom: "clamp(10px, 4vw, 20px)",
+    // marginBottom: "clamp(10px, 4vw, 20px)",
   },
   mainTitle: {
     fontSize: "clamp(46px, 4vw, 58px)",
