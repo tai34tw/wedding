@@ -1,10 +1,11 @@
+import { useInsertionEffect } from "react";
 import { useState } from "react";
 
 const GOOGLE_FORMS = {
   attending:
-    "https://docs.google.com/forms/d/e/1FAIpQLSfNKWgplOoZT1u9nVy1946BUqgbtE-8tPrvVtxTUEIHEllrQQ/formResponse",
+    "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfNKWgplOoZT1u9nVy1946BUqgbtE-8tPrvVtxTUEIHEllrQQ/formResponse",
   notAttending:
-    "https://docs.google.com/forms/d/e/1FAIpQLScWq6EmpGS3x3WIv7spPFTHkv49hCYRxcZRBQ00CanO3PppQQ/formResponse",
+    "https://docs.google.com/forms/u/0/d/e/1FAIpQLScWq6EmpGS3x3WIv7spPFTHkv49hCYRxcZRBQ00CanO3PppQQ/formResponse",
 };
 
 export default function RSVP() {
@@ -38,6 +39,17 @@ export default function RSVP() {
   const isValidEmail = (email) =>
     email === "無" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+  // 素食份數驗證(大人人數 + 小孩人數 >= 素食份數)
+  const isValidVegetarianCount = (numAdults, numKids, vegetarianCount) => {
+    if (attendance !== "attending") return true;
+
+    const numAdultsInt = parseInt(formData.numAdults, 10);
+    const numKidsInt = parseInt(formData.numKids, 10);
+    const vegetarianCountInt = parseInt(formData.vegetarianCount, 10);
+
+    return numAdultsInt + numKidsInt >= vegetarianCountInt;
+  };
+
   const handleChange = (e) => {
     let { name, value } = e.target;
 
@@ -67,6 +79,17 @@ export default function RSVP() {
       return;
     }
 
+    if (
+      isValidVegetarianCount(
+        formData.numAdults,
+        formData.numKids,
+        formData.vegetarianCount
+      ) === false
+    ) {
+      alert("素食份數不可超過出席總人數");
+      return;
+    }
+
     setLoading(true);
 
     const entryMap =
@@ -93,16 +116,31 @@ export default function RSVP() {
       attendance === "attending"
         ? GOOGLE_FORMS.attending
         : GOOGLE_FORMS.notAttending;
-    const data = new FormData();
+    // 使用 URLSearchParams 來處理資料格式 (比 FormData 更適合這種 fetch)
+    const params = new URLSearchParams();
 
     Object.keys(entryMap).forEach((key) => {
-      data.append(entryMap[key], formData[key] || "");
+      // 確保送出的是字串
+      params.append(entryMap[key], formData[key] || "");
     });
 
-    await fetch(formUrl, { method: "POST", mode: "no-cors", body: data });
+    try {
+      await fetch(formUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params.toString(),
+      });
 
-    setLoading(false);
-    setSubmitted(true);
+      setLoading(false);
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("送出失敗，請稍後再試");
+      setLoading(false);
+    }
   };
 
   if (submitted)
