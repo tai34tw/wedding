@@ -69,7 +69,7 @@ const styles = {
     alignItems: "center",
     fontFamily: "'Playfair Display', 'Noto Serif TC', serif",
     color: COLORS.primary,
-    padding: `clamp(30px, 4vw, 60px) 0 clamp(40px, 4vw, 80px)`,
+    padding: `clamp(10px, 4vw, 60px) 0 clamp(10px, 4vw, 80px)`,
     boxSizing: "border-box",
   },
   homeSection: {
@@ -83,13 +83,13 @@ const styles = {
     // marginBottom: "clamp(10px, 4vw, 20px)",
   },
   mainTitle: {
-    fontSize: "clamp(46px, 4vw, 58px)",
+    fontSize: "clamp(40px, 4vw, 58px)",
     fontWeight: 500,
     lineHeight: "1.2",
     textTransform: "uppercase",
     textShadow: "0 2px 6px rgba(0,0,0,0.1)",
     letterSpacing: "3px",
-    margin: `clamp(20px, 4vw, 40px) 0 clamp(10px, 4vw, 20px)`,
+    margin: `clamp(10px, 4vw, 40px) 0 clamp(0px, 4vw, 20px)`,
     fontFamily: "'Sawarabi Mincho', serif",
     color: COLORS.primary,
   },
@@ -106,7 +106,7 @@ const styles = {
     objectFit: "cover",
   },
   invitation: (isMobile) => ({
-    lineHeight: isMobile ? "1" : "1.5",
+    lineHeight: isMobile ? "0.5" : "1",
     fontSize: "clamp(14px, 4vw, 20px)",
     letterSpacing: "1px",
     color: COLORS.primary,
