@@ -6,7 +6,6 @@ import Divider from "./components/Divider.jsx";
 import RSVP from "./components/RSVP.jsx";
 
 function App() {
-  const isMobile = window.innerWidth < 480;
   return (
     <div style={styles.outer}>
       <div style={styles.container}>
@@ -24,7 +23,7 @@ function App() {
                 />
               </div>
 
-              <div style={styles.invitation(isMobile)}>
+              <div style={styles.invitation}>
                 <p>誠摯邀請</p>
                 <p>素惠 ❤️元泰的婚禮</p>
                 <p>{WEDDING_INFO.displayDate}</p>
@@ -61,7 +60,6 @@ const styles = {
   },
 
   app: {
-    minHeight: "100vh",
     width: "100%",
     backgroundColor: COLORS.background,
     display: "flex",
@@ -69,18 +67,26 @@ const styles = {
     alignItems: "center",
     fontFamily: "'Playfair Display', 'Noto Serif TC', serif",
     color: COLORS.primary,
-    padding: `clamp(10px, 4vw, 60px) 0 clamp(10px, 4vw, 80px)`,
+    padding: 0,
     boxSizing: "border-box",
   },
   homeSection: {
-    minHeight: "100vh",
+    height: "100dvh",
+    width: "100%",
+    padding: "clamp(20px, 4vw, 60px) 0 clamp(20px, 4vw, 80px)",
+    boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between", // 讓 Divider 黏在最上面和最下面
   },
   header: {
     textAlign: "center",
+    flex: 1, // 讓中間內容自動佔據剩餘空間
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     width: "100%",
-    // marginBottom: "clamp(10px, 4vw, 20px)",
   },
   mainTitle: {
     fontSize: "clamp(40px, 4vw, 58px)",
@@ -105,18 +111,11 @@ const styles = {
     borderRadius: "12px",
     objectFit: "cover",
   },
-  invitation: (isMobile) => ({
-    lineHeight: isMobile ? "0.5" : "1",
+  invitation: {
     fontSize: "clamp(14px, 4vw, 20px)",
     letterSpacing: "1px",
     color: COLORS.primary,
-  }),
-  // invitation: (isMobile) => ({
-  //   lineHeight: isMobile ? "1.2" : "1.8",
-  //   fontSize: isMobile ? "16px" : "18px",
-  //   letterSpacing: "1px",
-  //   color: COLORS.primary,
-  // }),
+  },
 };
 
 export default App;
