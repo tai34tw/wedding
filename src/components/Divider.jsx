@@ -1,8 +1,8 @@
 import { COLORS } from "../constants/wedding.js";
 
-function Divider({ text }) {
+function Divider({ text, style }) {
   return (
-    <div style={styles.divider}>
+    <div style={{ ...styles.divider, ...style }}>
       <div style={styles.dividerLine} />
       <span style={styles.dividerText}>{text}</span>
     </div>

@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import { COLORS, WEDDING_INFO } from "./constants/wedding.js";
 import coupleImage from "./assets/images/couple.png";
 import MapSection from "./components/MapSection.jsx";
@@ -6,10 +7,25 @@ import Divider from "./components/Divider.jsx";
 import RSVP from "./components/RSVP.jsx";
 
 function App() {
+  const appRef = useRef(null);
+
+  useEffect(() => {
+    const updateVh = () => {
+      const vh = window.innerHeight; // 使用 JS 獲取精確的可視高度
+      if (appRef.current) {
+        // 將高度設定為 CSS 變數
+        appRef.current.style.setProperty("--app-height", `${vh}px`);
+      }
+    };
+    updateVh();
+    window.addEventListener("resize", updateVh);
+    return () => window.removeEventListener("resize", updateVh);
+  }, []);
+
   return (
     <div style={styles.outer}>
       <div style={styles.container}>
-        <div style={styles.app}>
+        <div style={styles.app} ref={appRef}>
           <section style={styles.homeSection}>
             <Divider text={WEDDING_INFO.date} />
             <header style={styles.header}>
@@ -31,7 +47,7 @@ function App() {
                 <p>與我們一起慶祝！</p>
               </div>
             </header>
-            <Divider text={`↓ Get More Information ↓`} />
+            <Divider text={`↓ Get More Information ↓`} style={{ margin: 0 }} />
           </section>
           <MapSection />
           <Divider text="RSVP" />
@@ -71,7 +87,7 @@ const styles = {
     boxSizing: "border-box",
   },
   homeSection: {
-    height: "100dvh",
+    height: "var(--app-height, 100dvh)", // 優先使用--app-height, 100dvh為預設值
     width: "100%",
     padding: "clamp(20px, 4vw, 60px) 0 clamp(20px, 4vw, 80px)",
     boxSizing: "border-box",
