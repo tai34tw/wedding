@@ -22,6 +22,8 @@ function App() {
     return () => window.removeEventListener("resize", updateVh);
   }, []);
 
+  const isMobile = window.innerWidth < 480;
+
   return (
     <div style={styles.outer}>
       <div style={styles.container}>
@@ -39,7 +41,7 @@ function App() {
                 />
               </div>
 
-              <div style={styles.invitation}>
+              <div style={styles.invitation(isMobile)}>
                 <p>誠摯邀請</p>
                 <p>素惠 ❤️元泰的婚禮</p>
                 <p>{WEDDING_INFO.displayDate}</p>
@@ -127,11 +129,12 @@ const styles = {
     borderRadius: "12px",
     objectFit: "cover",
   },
-  invitation: {
+  invitation: (isMobile) => ({
+    lineHeight: isMobile ? "1" : "1.5",
     fontSize: "clamp(14px, 4vw, 20px)",
     letterSpacing: "1px",
     color: COLORS.primary,
-  },
+  }),
 };
 
 export default App;
