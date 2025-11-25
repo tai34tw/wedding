@@ -29,7 +29,7 @@ function App() {
       <div style={styles.container}>
         <div style={styles.app} ref={appRef}>
           <section style={styles.homeSection}>
-            <Divider text={WEDDING_INFO.date} />
+            <Divider text={WEDDING_INFO.date} style={{ margin: 0 }} />
             <header style={styles.header}>
               <h1 style={styles.mainTitle}>We Are Getting Married</h1>
 
@@ -91,7 +91,7 @@ const styles = {
   homeSection: {
     height: "var(--app-height, 100dvh)", // 優先使用--app-height, 100dvh為預設值
     width: "100%",
-    padding: "clamp(20px, 4vw, 60px) 0 clamp(20px, 4vw, 80px)",
+    padding: "clamp(0px, 4vw, 60px) 0 clamp(5px, 4vw, 80px)", // 最大化可用垂直空間
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
