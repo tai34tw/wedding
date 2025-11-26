@@ -36,6 +36,7 @@ function MapSection() {
             <div style={styles.mapOverlay} className="map-overlay">
               Open Google Maps
             </div>
+            <p style={styles.clickPrompt}>&lt; 點圖開啟導航 &gt;</p>
           </a>
         </div>
 
@@ -135,7 +136,18 @@ const styles = {
     opacity: 0,
     transition: "opacity 0.25s ease-in-out",
   },
-
+  clickPrompt: {
+    textAlign: "center",
+    textDecoration: "none",
+    fontSize: "clamp(12px, 3vw, 16px)",
+    color: COLORS.primary, // 使用輔助色強調
+    fontWeight: 500,
+    // 讓文字居中，並設定底部間距
+    margin: "8px auto 24px auto",
+    width: "90%",
+    maxWidth: "660px",
+    fontStyle: "italic",
+  },
   transportation: {
     width: "90%",
     maxWidth: "660px", //★ 與地圖保持一致
