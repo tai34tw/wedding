@@ -43,7 +43,7 @@ function App() {
 
               <div style={styles.invitation(isMobile)}>
                 <p>誠摯邀請</p>
-                <p>素惠 ❤️元泰的婚禮</p>
+                <p>元泰💍素惠的婚禮</p>
                 <p>{WEDDING_INFO.displayDate}</p>
                 <p>{WEDDING_INFO.venue}</p>
                 <p>與我們一起慶祝！</p>
@@ -113,7 +113,7 @@ const styles = {
     textTransform: "uppercase",
     textShadow: "0 2px 6px rgba(0,0,0,0.1)",
     letterSpacing: "3px",
-    margin: `clamp(10px, 4vw, 40px) 0 clamp(0px, 4vw, 20px)`,
+    margin: `clamp(5px, 4vw, 40px) 0 clamp(0px, 4vw, 20px)`,
     fontFamily: "'Sawarabi Mincho', serif",
     color: COLORS.primary,
   },
@@ -121,7 +121,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: "clamp(10px, 4vw, 20px)",
+    marginBottom: "clamp(5px, 4vw, 20px)",
   },
   coupleImage: {
     width: "clamp(170px, 4vw, 500px)",
