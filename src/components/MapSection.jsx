@@ -5,12 +5,25 @@ import subwayIcon from "/icons/subway.png";
 
 function MapSection() {
   return (
-    <section style={styles.section}>
+    <section id="location" style={styles.section}>
       <div style={styles.mapContainer}>
-        <h2 style={styles.mapTitle}>MAP</h2>
         <div style={styles.venueInfo}>
           <p style={styles.venueName}>{WEDDING_INFO.venue}</p>
           <p style={styles.venueAddress}>{WEDDING_INFO.address}</p>
+        </div>
+
+        <div style={styles.transportation}>
+          <TransportInfo
+            icon={subwayIcon}
+            title="捷運/公車"
+            content="捷運淡水線至士林站，轉乘公車815、255、304、小型公車18、19，至故宮博物院站下站。"
+          />
+          <TransportInfo
+            icon={shuttleIcon}
+            title="接駁車"
+            content="乘車處 - 士林捷運站一號出口直行至中正路左側（中正路249-1號）
+接駁時間：晚宴：16:45、17:15、17:45、18:15"
+          />
         </div>
 
         <div style={styles.mapFrame}>
@@ -39,20 +52,6 @@ function MapSection() {
             <p style={styles.clickPrompt}>&lt; 點圖開啟導航 &gt;</p>
           </a>
         </div>
-
-        <div style={styles.transportation}>
-          <TransportInfo
-            icon={subwayIcon}
-            title="捷運/公車"
-            content="捷運淡水線至士林站，轉乘公車815、255、304、小型公車18、19，至故宮博物院站下站。"
-          />
-          <TransportInfo
-            icon={shuttleIcon}
-            title="接駁車"
-            content="乘車處 - 士林捷運站一號出口直行至中正路左側（中正路249-1號）
-接駁時間：晚宴：16:45、17:15、17:45、18:15"
-          />
-        </div>
       </div>
     </section>
   );
@@ -79,14 +78,8 @@ const styles = {
     width: "100%",
     maxWidth: "800px",
     margin: "0 auto",
-    padding: "20px",
+    padding: "32px 20px 20px",
     boxSizing: "border-box",
-  },
-  mapTitle: {
-    fontSize: "clamp(22px, 4vw, 28px)",
-    fontWeight: "bold",
-    marginBottom: "8px",
-    textAlign: "left",
   },
   venueInfo: {
     textAlign: "left",
@@ -95,6 +88,7 @@ const styles = {
   venueName: {
     fontSize: "clamp(16px, 4vw, 20px)",
     margin: "0 0 4px 0",
+    fontWeight: "700",
   },
   venueAddress: {
     fontSize: "clamp(14px, 4vw, 18px)",
@@ -149,9 +143,9 @@ const styles = {
     fontStyle: "italic",
   },
   transportation: {
-    width: "90%",
-    maxWidth: "660px", //★ 與地圖保持一致
-    margin: "0 auto", // ★ 居中但文字靠左
+    width: "100%",
+    maxWidth: "none",
+    margin: "0",
     textAlign: "left",
     lineHeight: "clamp(1.5, 4vw, 1.8)",
   },

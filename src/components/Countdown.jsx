@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { COLORS, WEDDING_INFO } from "../constants/wedding.js";
 
-function Countdown() {
-  const weddingDate = new Date(WEDDING_INFO.weddingDateTime);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+function Countdown({ inline = false }) {
+  const weddingTime = new Date(WEDDING_INFO.weddingDateTime).getTime();
+
+  const calculateTimeLeft = useCallback(() => {
+    const now = Date.now();
+    const distance = weddingTime - now;
+
+    if (distance <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    return {
+      days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((distance / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((distance / (1000 * 60)) % 60),
+      seconds: Math.floor((distance / 1000) % 60),
+    };
+  }, [weddingTime]);
+
+  const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft());
+  const isFinished =
+    timeLeft.days === 0 &&
+    timeLeft.hours === 0 &&
+    timeLeft.minutes === 0 &&
+    timeLeft.seconds === 0;
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const distance = weddingDate - now;
-
-      if (distance <= 0) {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      }
-
-      return {
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((distance / (1000 * 60)) % 60),
-        seconds: Math.floor((distance / 1000) % 60),
-      };
-    };
-
     const timer = setInterval(() => {
       const newTimeLeft = calculateTimeLeft();
       setTimeLeft(newTimeLeft);
@@ -42,21 +43,26 @@ function Countdown() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [weddingDate]);
+  }, [calculateTimeLeft]);
 
   return (
-    <section style={styles.countdownSection}>
-      <h2 style={styles.countdownTitle}>WEDDING COUNTDOWN</h2>
-      <p style={styles.countdownSubtitle}>距離婚禮還有</p>
-
-      <div style={styles.timerGrid}>
-        <TimeBox label="Days" value={timeLeft.days} />
-        <TimeBox label="Hours" value={timeLeft.hours} />
-        <TimeBox label="Mins" value={timeLeft.minutes} />
-        <TimeBox label="Secs" value={timeLeft.seconds} />
-      </div>
-
-      <p style={styles.countdownFooter}>期待與你們見面！</p>
+    <section style={inline ? styles.inlineSection : styles.countdownSection}>
+      {inline ? (
+        <span style={styles.inlineText}>
+          {isFinished
+            ? "HAVE FUN"
+            : `${timeLeft.days} Days ${timeLeft.hours} Hours ${timeLeft.minutes} Mins ${timeLeft.seconds} Secs`}
+        </span>
+      ) : isFinished ? (
+        <div style={styles.finishedText}>HAVE FUN</div>
+      ) : (
+        <div style={styles.timerGrid}>
+          <TimeBox label="Days" value={timeLeft.days} />
+          <TimeBox label="Hours" value={timeLeft.hours} />
+          <TimeBox label="Mins" value={timeLeft.minutes} />
+          <TimeBox label="Secs" value={timeLeft.seconds} />
+        </div>
+      )}
     </section>
   );
 }
@@ -75,18 +81,12 @@ const styles = {
     textAlign: "center",
     width: "100%",
     marginBottom: "40px",
-    color: COLORS.primary,
+    color: COLORS.secondary,
   },
-  countdownTitle: {
-    fontSize: "clamp(24px, 4vw, 48px)",
-    letterSpacing: "6px",
-    fontWeight: "300",
-    marginBottom: "margin: clamp(20px, 4vw, 40px) 0px clamp(10px, 4vw, 20px);",
-  },
-  countdownSubtitle: {
-    fontSize: "clamp(12px, 4vw, 20px)",
-    marginBottom: "40px",
-    letterSpacing: "3px",
+  inlineSection: {
+    width: "auto",
+    margin: "0",
+    color: COLORS.secondary,
   },
   timerGrid: {
     display: "flex",
@@ -94,6 +94,17 @@ const styles = {
     gap: "clamp(8px, 4vw, 50px)",
     marginBottom: "40px",
     flexWrap: "nowrap",
+  },
+  inlineText: {
+    fontSize: "clamp(14px, 4vw, 20px)",
+    letterSpacing: "1px",
+    whiteSpace: "nowrap",
+  },
+  finishedText: {
+    fontSize: "clamp(24px, 5vw, 36px)",
+    fontWeight: "600",
+    letterSpacing: "3px",
+    marginBottom: "40px",
   },
   timeBox: {
     minWidth: "70px",
@@ -109,10 +120,6 @@ const styles = {
     fontSize: "clamp(12px, 4vw, 16px)",
     letterSpacing: "3px",
     opacity: 0.8,
-  },
-  countdownFooter: {
-    fontSize: "clamp(12px, 4vw, 20px)",
-    letterSpacing: "3px",
   },
 };
 

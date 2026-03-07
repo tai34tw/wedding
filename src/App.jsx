@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { COLORS, WEDDING_INFO } from "./constants/wedding.js";
 import coupleImage from "./assets/images/couple.png";
 import MapSection from "./components/MapSection.jsx";
-import Countdown from "./components/Countdown.jsx";
+import FindSeatSection from "./components/SeatSection.jsx";
 import Divider from "./components/Divider.jsx";
-import RSVP from "./components/RSVP.jsx";
+import Countdown from "./components/Countdown.jsx";
 
 function App() {
   const appRef = useRef(null);
@@ -29,9 +29,12 @@ function App() {
       <div style={styles.container}>
         <div style={styles.app} ref={appRef}>
           <section style={styles.homeSection}>
-            <Divider text={WEDDING_INFO.date} style={{ margin: 0 }} />
+            <Divider
+              text={<Countdown inline />}
+              style={styles.largeDividerWithNoMargin}
+            />
             <header style={styles.header}>
-              <h1 style={styles.mainTitle}>We Are Getting Married</h1>
+              <h1 style={styles.mainTitle}>WONDERFUL DAY</h1>
 
               <div style={styles.coupleSection}>
                 <img
@@ -42,19 +45,32 @@ function App() {
               </div>
 
               <div style={styles.invitation(isMobile)}>
-                <p>誠摯邀請</p>
                 <p>元泰💍素惠的婚禮</p>
                 <p>{WEDDING_INFO.displayDate}</p>
-                <p>{WEDDING_INFO.venue}</p>
-                <p>與我們一起慶祝！</p>
+                <p style={styles.quickLinksRow}>
+                  <a href="#seatSearch" style={styles.quickLink}>
+                    桌次查詢
+                  </a>
+                  <span aria-hidden="true" style={styles.quickLinkSeparator}>
+                    |
+                  </span>
+                  <a href="#location" style={styles.quickLink}>
+                    交通資訊
+                  </a>
+                </p>
               </div>
             </header>
-            <Divider text={`↓ Get More Information ↓`} style={{ margin: 0 }} />
+            <Divider
+              text={` FIND YOUR SEAT `}
+              style={styles.largeDividerWithNoMargin}
+            />
           </section>
+          <FindSeatSection />
+          <Divider
+            text={` WHERE TO GO `}
+            style={styles.largeDividerWithNoMargin}
+          />
           <MapSection />
-          <Divider text="RSVP" />
-          <Countdown />
-          <RSVP />
         </div>
       </div>
     </div>
@@ -113,7 +129,7 @@ const styles = {
     textTransform: "uppercase",
     textShadow: "0 2px 6px rgba(0,0,0,0.1)",
     letterSpacing: "3px",
-    margin: `clamp(5px, 4vw, 40px) 0 clamp(0px, 4vw, 20px)`,
+    margin: `clamp(0px, 1vw, 8px) 0 clamp(0px, 3vw, 16px)`,
     fontFamily: "'Sawarabi Mincho', serif",
     color: COLORS.primary,
   },
@@ -135,6 +151,26 @@ const styles = {
     letterSpacing: "1px",
     color: COLORS.primary,
   }),
+  quickLinksRow: {
+    margin: "1em 0",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "18px",
+  },
+  quickLink: {
+    color: COLORS.primary,
+    textDecoration: "none",
+    cursor: "pointer",
+    padding: "0 4px",
+  },
+  quickLinkSeparator: {
+    userSelect: "none",
+  },
+  largeDividerWithNoMargin: {
+    margin: 0,
+    fontSize: "18px",
+  },
 };
 
 export default App;

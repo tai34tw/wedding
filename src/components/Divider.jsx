@@ -4,7 +4,7 @@ function Divider({ text, style }) {
   return (
     <div style={{ ...styles.divider, ...style }}>
       <div style={styles.dividerLine} />
-      <span style={styles.dividerText}>{text}</span>
+      <div style={styles.dividerText}>{text}</div>
     </div>
   );
 }
