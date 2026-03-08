@@ -216,7 +216,7 @@ function FindSeatSection() {
           <input
             type="text"
             inputMode="numeric"
-            placeholder="請輸入手機末四碼，例如 9339"
+            placeholder="請輸入手機末四碼"
             value={queryCode}
             onChange={handleQueryCodeChange}
             style={{ ...styles.input, ...(isMobile ? styles.inputMobile : {}) }}
@@ -227,7 +227,7 @@ function FindSeatSection() {
         </form>
         {inputError && <p style={styles.inputErrorText}>{inputError}</p>}
 
-        {searched && results.length > 0 && (
+        {searched && results.length > 0 && !inputError && (
           <>
             <p style={styles.successText}>
               查詢結果：{matchedTableNames.join("、")}
@@ -405,7 +405,7 @@ const styles = {
   inputErrorText: {
     width: "min(100%, 640px)",
     margin: "4px auto 8px auto",
-    fontSize: "16px",
+    fontSize: "20px",
     color: "#a33a3a",
   },
   mapWrapper: {

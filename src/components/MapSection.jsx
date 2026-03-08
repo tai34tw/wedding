@@ -1,7 +1,8 @@
 import { COLORS, WEDDING_INFO } from "../constants/wedding.js";
 import mapPreviewImage from "../assets/images/map-preview.png";
-import shuttleIcon from "/icons/shuttle.png";
-import subwayIcon from "/icons/subway.png";
+import shuttleIcon from "/icons/shuttle.svg";
+import subwayIcon from "/icons/subway.svg";
+import carIcon from "/icons/car.svg";
 
 function MapSection() {
   return (
@@ -23,6 +24,11 @@ function MapSection() {
             title="接駁車"
             content="乘車處 - 士林捷運站一號出口直行至中正路左側（中正路249-1號）
 接駁時間：晚宴：16:45、17:15、17:45、18:15"
+          />
+          <TransportInfo
+            icon={carIcon}
+            title="自行前往"
+            content="車位有限，建議停放附近停車場。"
           />
         </div>
 
