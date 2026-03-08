@@ -7,8 +7,8 @@ export const COLORS = {
 };
 
 export const WEDDING_INFO = {
-  displayDate: "2026.03.21（六）18:00",
+  displayDate: "2026.03.21 (六) ☆ 17:00 證婚 ★ 18:00 入場",
   venue: "青青食尚花園會館 | 費加洛禮堂",
   address: "臺北市士林區至善路二段266巷32號",
-  weddingDateTime: "2026-03-21T18:00:00"
+  weddingDateTime: "2026-03-21T17:00:00"
 };
