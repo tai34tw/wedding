@@ -17,13 +17,27 @@ function MapSection() {
           <TransportInfo
             icon={subwayIcon}
             title="捷運/公車"
-            content="捷運淡水線至士林站，轉乘公車815、255、304、小型公車18、19，至故宮博物院站下站。"
+            content="捷運淡水線至士林捷運站，轉乘公車255、304、小型公車18、19，至故宮博物院站下站（步行約3分鐘）。"
           />
           <TransportInfo
             icon={shuttleIcon}
             title="接駁車"
-            content="乘車處 - 士林捷運站一號出口直行至中正路左側（中正路249-1號）
-接駁時間：晚宴：16:45、17:15、17:45、18:15"
+            content={
+              <>
+                乘車處 - 劍南路捷運站一號出口直行至北安路交叉口
+                <br />
+                接駁時間：16:30~18:30，每10分鐘一班（車程約5分鐘）。
+                <br />
+                搭車指引：
+                <a
+                  href="https://youtube.com/shorts/wDz2kf8dk08?si=vPbVUMQma4Yzt3ch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  YouTube Shorts
+                </a>
+              </>
+            }
           />
           <TransportInfo
             icon={carIcon}
